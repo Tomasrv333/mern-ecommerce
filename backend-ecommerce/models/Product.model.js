@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose')
 const { Schema } = mongoose;
 const AutoIncrement = require('mongoose-sequence')(mongoose) 
 
@@ -29,10 +29,10 @@ const productSchema = new Schema({
     timestamps: true
 })
 
-ProductSchema.plugin(AutoIncrement, {
+productSchema.plugin(AutoIncrement, {
     inc_field: 'ticket',
     id: 'ticketNums',
     start_seq: 500
 })
 
-module.exports = mongoose.model('Product', ProductSchema)
+module.exports = mongoose.model('Product', productSchema)
