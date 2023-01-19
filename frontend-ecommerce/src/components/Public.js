@@ -14,6 +14,9 @@ const Public = () => {
                     <a href='tel:+573214332191'>321 4332191</a>
                 </address>
             </main>
+            <footer>
+                <Link to="/login">Admin Login</Link>
+            </footer>
         </section>
     )
 

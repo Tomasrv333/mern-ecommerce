@@ -1,0 +1,19 @@
+@use '../components/header';
+
+.home {
+    padding: 0 7rem;
+}
+
+.home-bg__container {
+    padding: 7rem;
+    height: 26vh;
+    background-color: #b0bace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+
+    h1 {
+        color: lighten($color: #b0bace, $amount: 14);
+    }
+}
