@@ -1,15 +1,15 @@
 import { Outlet } from 'react-router-dom'
-import DashHeader from './Header'
-import DashFooter from './DashFooter'
+import Header from './Header'
+import Footer from './Footer'
 
 const Layout = () => {
     return (
         <>
-            <DashHeader />
+            <Header />
             <div className='dash-container'>
                 <Outlet />
             </div>
-            <DashFooter />
+            <Footer />
         </>
     )
 }

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import * as Unicons from '@iconscout/react-unicons'
 
 const Header = () => {
     
@@ -8,6 +9,12 @@ const Header = () => {
                 <Link to='/'>
                     <h1 className='header__title'>E-commerce Project</h1>
                 </Link>
+                <input className='header__input' type='text'></input>
+                <div className='header__icons'>
+                    <Unicons.UilHeart />
+                    <Unicons.UilShoppingBag />
+                    <Unicons.UilUserCircle />
+                </div>
             </div>
             <nav className='header__nav'>
                     <ul>
@@ -28,6 +35,7 @@ const Header = () => {
                         </Link>
                     </ul>
                 </nav>
+                
         </header>
         
     )

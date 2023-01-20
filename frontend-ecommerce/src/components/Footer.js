@@ -1,8 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate, useLocation } from 'react-router-dom'
 
-const DashFooter = () => {
+const Footer = () => {
     const navigate = useNavigate()
     const { pathname } = useLocation()
 
@@ -11,15 +9,14 @@ const DashFooter = () => {
     let goHomeButton = null
     if (pathname !== '/dash') {
         goHomeButton = (
-            <button className='dash-footer__button icon-button' title='Home' onClick={onGoHomeClicked}>
-                <FontAwesomeIcon icon={faHouse} />
+            <button className='footer__button icon-button' title='Home' onClick={onGoHomeClicked}>
 
             </button>
         )
     }
 
     const content = (
-        <footer className='dash-footer'>
+        <footer className='footer'>
             <p>Current user:</p>
         </footer>
     )
@@ -27,4 +24,4 @@ const DashFooter = () => {
     return content
 }
 
-export default DashFooter
+export default Footer

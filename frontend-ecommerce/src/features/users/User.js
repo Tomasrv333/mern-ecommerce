@@ -1,0 +1,40 @@
+import * as Unicons from '@iconscout/react-unicons'
+import { useNavigate } from "react-router-dom";
+
+import { useSelector } from "react-redux";
+import { selectProductById } from "../products/productApiSlice";
+import { selectUserById } from "./usersApiSlice";
+
+const User = ({ userId }) => {
+    const user = useSelector(state => selectUserById(state, userId))
+
+    const navigate = useNavigate()
+
+    if (user) {
+        const handleEdit = () => navigate('/dash/users/${userId}')
+
+        const userRolesString = user.roles.toString().replaceAll(',', ', ')
+
+        const cellStatus = user.active ? '' : 'table__cell--inactive'
+
+        return (
+            <tr className="table__row user">
+                <td className={`table__cell ${cellStatus}`}>{user.username}</td>
+                <td className={`table__cell ${cellStatus}`}>{userRolesString}</td>
+                <td className={`table__cell ${cellStatus}`}>
+                    <button 
+                        className="icon-button table__button"
+                        onClick={handleEdit}
+                    >
+                        <Unicons.UilEdit />
+                    </button>
+                </td>
+            </tr>
+        )
+
+    } else {
+        return null
+    }
+}
+
+export default User
