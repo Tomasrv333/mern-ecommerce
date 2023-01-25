@@ -2,12 +2,14 @@ import React from "react";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from 'connected-react-router';
 
-import sotre, { history } from './store';
+import store, { history } from './store';
 import { SocketProvider } from './contexts/Socket';
 import { SET_AUTH } from './containers/Authentication/constants';
 import Application from './containers/Application';
 import ScrollToTop from './scrollToTop';
 import setToken from './utils/token';
+
+import './style/style.scss';
 
 const token = localStorage.getItem('token');
 
