@@ -5,6 +5,6 @@ const router = express.Router();
 
 router
     .get('/me', getUserInfo)
-    .get('/me', updateUserInfo)
+    .put('/me', updateUserInfo)
 
 export default router;
