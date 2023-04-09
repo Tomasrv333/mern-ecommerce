@@ -4,13 +4,13 @@ import {getAllOrders, getOneOrder, updateOrder} from '../controllers/Admin/Admin
 
 const router = express.Router();
 
-// Products
+// Products Endpoints
 router.get('/products', getAllProducts)
 router.post('/products', postNewProduct)
 router.put('/products/:productId', updateProduct)
 router.delete('/products/:productId', deleteProduct)
 
-// Orders
+// Orders Endpoints
 router.get('/orders', getAllOrders)
 router.get('/orders/:orderId', getOneOrder)
 router.put('/orders/:orderId', updateOrder)
