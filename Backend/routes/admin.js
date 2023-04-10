@@ -1,6 +1,6 @@
 import express from 'express';
 import {getAllProducts, postNewProduct, updateProduct, deleteProduct} from '../controllers/Admin/AdminProductController.js';
-import {getAllOrders, getOneOrder, updateOrder} from '../controllers/Admin/AdminOrderController.js';
+import {getAllOrders, getOneOrder, updateOrder} from '../controllers/Admin/AdminOrdersController.js';
 
 const router = express.Router();
 

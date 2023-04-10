@@ -28,9 +28,10 @@ export const postNewProduct = async (req, res, next) => {
 
 export const updateProduct = async (req, res, next) => {
     try{
+        console.log(req.params)
         const product = await Product.findById(req.params.productId).exec();
         if(!product) {
-            return next(createError({status: 404, message: "No task found"}))
+            return next({status: 404, message: "No task found"})
         }
 
         const updateProduct = await Product.findByIdAndUpdate(req.params.productId, {

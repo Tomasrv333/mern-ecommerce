@@ -13,7 +13,6 @@ export const checkUserAuth = async (req, res, next) => {
 
         const userId = decoded.id;
         const user = await User.findOne({_id: userId })
-        console.log(user.role)
 
         if (user.role !== 'user' && user.role !== 'admin') {
             return res.status(401).json({ message: 'Usuario no autenticado' })
