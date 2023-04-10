@@ -11,13 +11,14 @@ export const checkUserAuth = async (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        req.user = decoded.user;
+        const userId = decoded.id;
+        const user = await User.findOne({_id: userId })
+        console.log(user.role)
 
-        if (req.user.role !== 'user') {
+        if (user.role !== 'user' && user.role !== 'admin') {
             return res.status(401).json({ message: 'Usuario no autenticado' })
         }
-
-        req.user = user;
+        req.user = decoded
         next();
     } catch (err) {
         return res.status(401).json({ message: 'Token invalido' })
@@ -34,13 +35,13 @@ export const checkAdminAuth = async (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        req.user = decoded.user;
+        const userId = decoded.id;
+        const user = await User.findOne({_id: userId })
 
-        if (req.user.role !== 'admin') {
-            return res.status(401).json({ message: 'Admin no autenticado' })
+        if (user.role !== 'admin') {
+            return res.status(401).json({ message: 'Usuario no autenticado' })
         }
-
-        req.user = user;
+        req.user = decoded
         next();
     } catch (err) {
         return res.status(401).json({ message: 'Token invalido' })
