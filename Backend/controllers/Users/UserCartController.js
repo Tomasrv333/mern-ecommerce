@@ -4,6 +4,7 @@ import Product from '../../models/Product.js';
 export const getUserCart = async (req, res, next) => {
     try{
         const data = await User.findById(req.user.id).select('cart');
+        console.log(data)
         const userCart = data.cart
         console.log(userCart)
         return res.status(200).json(userCart);
@@ -12,41 +13,48 @@ export const getUserCart = async (req, res, next) => {
     }
 }
 
-export const postUserCartElement = async (req, res, next) => {
+export const postCartItem = async (req, res, next) => {
     try {
-        const product = await Product.findById(req.params.productId).exec();
-        if(!product) {
-            return next({status: 404, message: "Producto no disponible"})
+        const userId = req.user.id;
+        const productId = req.params.productId;
+        const quantity = req.body.quantity;
+        const product = await Product.findById(productId);
+
+        const price = product.price
+    
+        if (!product) {
+          return res.status(404).send('Producto no encontrado');
         }
     
-        const data = await User.findById(req.user.id).select('cart');
-        const userCart = data.cart;
-        console.log(data.cart)
-
-        for (id in data.cart) {
-            console.log(id)
-        }
-        const productExist = data.cart.filter(id => id._id === req.params.productId)
-        console.log(productExist)
-        if (productExist.length > 0) {
-            return next({status: 400, message: "El producto ya ha sido añadido"})
-        }
-
-        data.cart.push(product);
-
-        await data.save();
+        const user = await User.findById(userId);
+        const cartItem = user.cart.find(item => item.product.toString() === productId);
     
-        res.status(200).send('Producto agregado al carrito correctamente');
-      } catch (error) {
-        console.log(error);
-        res.status(500).send('Error al agregar el producto al carrito');
-      }
+        if (cartItem) {
+          cartItem.quantity += quantity;
+        } else {
+            user.cart.push({ 
+                product: productId,
+                quantity: quantity,
+                price: price
+            });
+        }
+    
+        await user.save();
+        return res.status(200).json(user.cart);
+    } catch (err) {
+        return next(err);
+    }
 }
 
-export const deleteUserCartElement = async (req, res, next) => {
-    try{
-        
-    }catch(err) {
-        
+export const deleteCartItem = async (req, res, next) => {
+    try {
+        const userId = req.user.id;
+        const productId = req.params.productId;
+        const user = await User.findById(userId);
+        user.cart = user.cart.filter(product => product.product.toString() !== productId);
+        await user.save();
+        return res.status(200).json(user.cart);
+    } catch (err) {
+        return next(err);
     }
 }

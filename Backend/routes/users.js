@@ -1,17 +1,18 @@
 import express from 'express';
-import {getUserOrders} from '../controllers/Users/UserOrdersController.js';
+import {getUserOrders, postUserOrder} from '../controllers/Users/UserOrdersController.js';
 import {getUserProfile, updateUserProfile} from '../controllers/Users/UserController.js';
-import {getUserCart, postUserCartElement, deleteUserCartElement} from '../controllers/Users/UserCartController.js';
+import {getUserCart, postCartItem, deleteCartItem} from '../controllers/Users/UserCartController.js';
 
 const router = express.Router();
 
 // Cart Endpoints
 router.get('/cart', getUserCart);
-router.post('/cart/:productId', postUserCartElement);
-router.delete('/cart', deleteUserCartElement);
+router.post('/cart/add/:productId', postCartItem);
+router.delete('/cart/delete/:productId', deleteCartItem);
 
 // Orders Endpoints
-router.use('/orders', getUserOrders);
+router.get('/orders', getUserOrders);
+router.post('/orders/add', postUserOrder);
 
 // Profile Endpoints
 router.get('/profile', getUserProfile)
