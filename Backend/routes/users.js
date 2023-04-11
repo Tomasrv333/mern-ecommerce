@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Cart Endpoints
 router.get('/cart', getUserCart);
-router.post('/cart', postUserCartElement);
+router.post('/cart/:productId', postUserCartElement);
 router.delete('/cart', deleteUserCartElement);
 
 // Orders Endpoints
