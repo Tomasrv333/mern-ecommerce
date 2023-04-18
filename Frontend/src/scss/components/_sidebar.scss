@@ -1,36 +1,23 @@
-.dropdown {
-    position: relative;
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100vh;
+    background-color: rgb(231, 230, 231);
+
+    .close-icon {
+        display: flex;
+        align-items: center;
+        height: 59.9px;
+        padding: 0 1rem;
+    }
+
+    .content {
+        padding: 1rem;
+    }
 }
 
-.dropdown-menu {
-    position: absolute;
-    list-style-type: none;
-    padding: 0;
-    width: 11.2rem;
-    height: 88vh;
-    left: 0;
-    border-left: 1px solid black;
-    
-    li {
-        margin: 0;
-        padding: 0.6rem 0;
-        background-color: inherit;
-
-        a {
-            width: 100%;
-            height: 100%;
-            text-align: left;
-            background: none;
-            color: inherit;
-            border: none;
-            padding: 0.6rem;
-            margin: 0;
-            font: inherit;
-            cursor: pointer;
-        }
-    }
-
-    li:hover {
-        background-color: lightblue;
-    }
+.sidebar.open {
+    width: 12rem;
 }

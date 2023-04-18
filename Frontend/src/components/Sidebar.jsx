@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { FaTimes } from 'react-icons/fa';
 
-const Sidebar = () => {
-    const [isOpen, setIsOpen] = useState(false);
+const Sidebar = ({ isOpen, toggleSidebar }) => {
 
     return (
         <div className={`sidebar ${isOpen ? "open" : ""}`}>
-            <FaTimes onClick={() => setIsOpen(false)}/>
+            <div className='close-icon'>
+                <FaTimes onClick={toggleSidebar}/>
+            </div>
+            <div className='content'>
+                <a>Settings</a>
+            </div>
         </div>
 
     )

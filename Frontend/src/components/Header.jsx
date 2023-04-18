@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaSearch, FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { IconContext } from 'react-icons/lib';
-import Dropdown from './Dropdown';
+import Sidebar from './Sidebar';
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  }
+
   return (
     <header className='header'>
       <nav className='header__nav nav'>
@@ -16,25 +22,11 @@ const Header = () => {
               </IconContext.Provider>
           </div>
           <div className='nav__icons-content'>
-            <Dropdown 
-              trigger={<FaUserCircle size={18}/>}
-              menu={[
-                <a href='/settings'>Settings</a>,
-                <a href='/orders'>Orders</a>,
-                <a href='/payment'>Payment Methods</a>
-              ]}
-            />
-            <Dropdown 
-              trigger={<FaShoppingCart size={18}/>}
-              menu={[
-                <a href='/settings'>Settings</a>,
-                <a href='/orders'>Orders</a>,
-                <a href='/payment'>Payment Methods</a>
-              ]}
-            /> 
+            <FaUserCircle onClick={toggleSidebar} />
           </div>
         </div>
       </nav>
+      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>
     </header>
   )
 }
