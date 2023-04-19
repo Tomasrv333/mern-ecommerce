@@ -22,7 +22,7 @@ const Header = () => {
               </IconContext.Provider>
           </div>
           <div className='nav__icons-content'>
-            <FaUserCircle onClick={toggleSidebar} />
+            <FaUserCircle onClick={toggleSidebar} size={18}/>
           </div>
         </div>
       </nav>
