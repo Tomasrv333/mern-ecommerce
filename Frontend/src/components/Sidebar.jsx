@@ -17,6 +17,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                     <FaReceipt/>
                     <a>Orders</a>
                 </div>
+                <div className='sidebar-item'>
+                    <FaReceipt/>
+                    <a>Logout</a>
+                </div>
             </div>
         </div>
 
