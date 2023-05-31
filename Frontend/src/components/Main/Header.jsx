@@ -22,8 +22,17 @@ const Header = () => {
               </IconContext.Provider>
           </div>
           <div className='nav__icons-content'>
-            <FaUserCircle onClick={toggleSidebar} size={18}/>
+            <FaUserCircle onClick={toggleSidebar} size={24}/>
           </div>
+        </div>
+        <div className='nav__content-items'>
+          <ul>
+            <li>Salsas</li>
+            <li>Semillas</li>
+            <li>Accesorios</li>
+            <li>Herramientas</li>
+            <li>Fertilizantes</li>
+          </ul>
         </div>
       </nav>
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>

@@ -1,15 +1,21 @@
 import './main.scss'
-import Header from './components/Header'
+import { Routes, Route } from 'react-router-dom';
+import PrivateRoutes from './components/PrivateRoutes';
 import Home from './Pages/Home'
-import Footer from './components/Footer'
+import Auth from './Pages/Auth';
 
 function App() {
 
   return (
     <>
-      <Header/>
-      <Home/>
-      <Footer/>
+      <Routes>
+        <Route element={<PrivateRoutes/>}>
+            {/* <Route path='/edit-profile' element={<EditProfile />} /> */}
+        </Route>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/auth' element={<Auth />} />
+        {/* <Route path='/auth/register' element={<AuthRegister />} /> */}
+      </Routes>
     </>
   )
 }

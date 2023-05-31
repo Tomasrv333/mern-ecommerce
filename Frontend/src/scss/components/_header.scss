@@ -1,21 +1,22 @@
 .header {
     width: 100%;
-    padding: 0.8rem 0;
-    background-color: rgb(214, 214, 214);
+    background-color: rgb(12, 94, 9);
     position: fixed;
 }
 
 .nav__content {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    padding: 1rem 6rem;
+    justify-content: space-between;
 
     .nav__title {
+        width: 33.3%;
         margin: 0;
     }
 
     .nav__input {
-        width: 35%;
+        width: 33.3%;
         position: relative;
         display: flex;
         align-items: center;
@@ -27,11 +28,32 @@
         .nav__input-icon {
             position: absolute;
             right: 1rem;
+            color: rgb(12, 94, 9);
         }
     }
 
     .nav__icons-content {
+        width: 33.3%;
         display: flex;
+        justify-content: end;
         gap: 1.5rem;
+    }
+}
+
+.nav__content-items {
+    color: rgb(12, 94, 9);
+    background-color: white;
+
+    ul {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 0;
+        padding: 1rem 0;
+
+        li {
+            cursor: pointer;
+            list-style: none;
+        }
     }
 }
